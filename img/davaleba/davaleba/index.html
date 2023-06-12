@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header id="header"></header>
+    <div id="userCard-wrapper"></div>
+
+    <form action="">
+        <label for="">id :</label>
+        <input type="text" name="" id="id">
+
+        <label for="">postId :</label>
+        <input type="text" name="" id="postId">
+
+        <label for="">name :</label>
+        <input type="text" name="" id="name">
+
+        <label for="">email :</label>
+        <input type="text" name="" id="email">
+
+        <label for="">body :</label>
+        <textarea name="" id="body" cols="30" rows="10"></textarea>
+
+        <button id="submit-button">submit</button>
+    </form>
+
+
+    <script>
+        //  #1( გამოიყენეთ ყველა  სტრინგის მეთოდი რაც აქ არის ჩამოთვლილი და დალოგეთ კონსოლში ყველა მნიშვნელობა, ისე როგორც ლექციაზე გავაკეთეთ)
+
+        const text = 'lekso mdinaradze';
+        let lenght = text.length;
+        let slice = text.slice(7,24);
+        let substr = text.substr(6,11);
+        let replace = text.replace('lekso' , 'nikolozi');
+        let upperCase = text.toUpperCase();
+        let lowerCase = text.toLowerCase();
+        let padStrart = text.padStart( 5 , 'n');
+        let padEnd = text.padEnd( 5 , 'n');
+        let charAt = text.charAt(0);
+        let split = text.split(' ');
+
+        const name = '    lekso     ';
+        const lastName = 'mdinaradze';
+        let concat = name.concat('_' , lastName);
+        let trim = name.trim();
+        let trimStart = name.trimStart();
+        let trimEnd = name.trimEnd();
+        console.log(lenght,slice,substr,replace,upperCase,lowerCase,padStrart,padEnd,charAt,split)
+        console.log(concat,trim,trimStart,trimEnd)
+
+        // #2(მოცემულია კომენტარების მასივი, dom მანუპულაციით გამოიტანეთ ყველა ინფორმაცია ქარდებში, გამოიყენეთ შესაბამისი მნიშნვნელობის მქონე ტეგები და ერთმანეთის გვერდიგვერდ განათავსეთ ყველა ელემენტი flex ან grid ის საშუალებით)
+        const userCard = [
+            {
+                "postId": 1,
+                "id": 1,
+                "name": "id labore ex et quam laborum",
+                "email": "Eliseo@gardner.biz",
+                "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+            },
+            {
+                "postId": 1,
+                "id": 2,
+                "name": "quo vero reiciendis velit similique earum",
+                "email": "Jayne_Kuhic@sydney.com",
+                "body": "est natus enim nihil est dolore omnis voluptatem numquam\net omnis occaecati quod ullam at\nvoluptatem error expedita pariatur\nnihil sint nostrum voluptatem reiciendis et"
+            },
+            {
+                "postId": 1,
+                "id": 3,
+                "name": "odio adipisci rerum aut animi",
+                "email": "Nikita@garfield.biz",
+                "body": "quia molestiae reprehenderit quasi aspernatur\naut expedita occaecati aliquam eveniet laudantium\nomnis quibusdam delectus saepe quia accusamus maiores nam est\ncum et ducimus et vero voluptates excepturi deleniti ratione"
+            },
+            {
+                "postId": 1,
+                "id": 4,
+                "name": "alias odio sit",
+                "email": "Lew@alysha.tv",
+                "body": "non et atque\noccaecati deserunt quas accusantium unde odit nobis qui voluptatem\nquia voluptas consequuntur itaque dolor\net qui rerum deleniti ut occaecati"
+            },
+            {
+                "postId": 1,
+                "id": 5,
+                "name": "vero eaque aliquid doloribus et culpa",
+                "email": "Hayden@althea.biz",
+                "body": "harum non quasi et ratione\ntempore iure ex voluptates in ratione\nharum architecto fugit inventore cupiditate\nvoluptates magni quo et"
+            }
+        ]
+        const userCardWrapper = document.getElementById('userCard-wrapper');
+        for (let i = 0; i < userCard.length; i++) {
+            const div = document.createElement('div');
+            div.classList.add('wrapper')
+
+            const p = document.createElement('p');
+            div.appendChild(p);
+            p.textContent = `post-id : ${userCard[i].postId}`;
+            p.classList.add('post-id');
+            
+            const p3 = document.createElement('p');
+            div.appendChild(p3);
+            p3.textContent =`Id : ${userCard[i].id}`;
+            p3.classList.add('id');
+
+            const h1 = document.createElement('h1');
+            div.appendChild(h1);
+            h1.textContent = `name : ${userCard[i].name}`;
+            h1.classList.add('name');
+
+            const h3 = document.createElement('h3');
+            div.appendChild(h3);
+            h3.textContent = `Email : ${userCard[i].email}`;
+            h3.classList.add('email');
+
+            const p2 = document.createElement('p');
+            div.appendChild(p2);
+            p2.textContent = userCard[i].body;
+            p2.classList.add('body');
+
+            const button = document.createElement('button')
+            div.appendChild(button)
+            button.textContent = ('delete')
+            button.classList.add('btn')
+            button.addEventListener('click' , () => {
+                div.remove()
+            })
+
+            userCardWrapper.appendChild(div);
+        }
+
+        // #3(დაამატეთ ფორმა შემედგი   ველებით id,postId, name, email, body (body სთვის გამოიყენეთ textarea)  ღილაკზე დაჭერისას (form submit) შეყვანილი ინფორმაცია დაამატეთ ზემოთ არსებულ მასივს, თუ რომელიმე შესაყვანი ველი ცარიელია, გამოიტანეთ ტექსტი წითლად " გთხოვთ შეავსოთ ველი". )
+        const button = document.getElementById('submit-button');
+        let input1 = document.getElementById("id");
+        let input2 = document.getElementById("postId");
+        let input3 = document.getElementById("name");
+        let input4 = document.getElementById("email");
+        let input5 = document.getElementById("body");
+
+        button.addEventListener('click', () => {
+        if (input1.value === "" || input2.value === "" || input3.value === "" || input4.value === "" || input5.value === "") {
+            alert('გთხოვთ შეავსოთ ყველა ველი');
+        } else {
+            let inputValue1 = input1.value;
+            let inputValue2 = input2.value;
+            let inputValue3 = input3.value;
+            let inputValue4 = input4.value;
+            let inputValue5 = input5.value;
+
+            const newCard = {
+            "postId": inputValue2,
+            "id": inputValue1,
+            "name": inputValue3,
+            "email": inputValue4,
+            "body": inputValue5
+            };
+
+            userCard.push(newCard);
+        }
+        });
+
+        // #5( დაამატეთ ჰედერი , სადაც გექნებათ ორი ღილაკი ავტორიზაცია და რეგისტრაცია; ავტროიზაციისას გახსეnით ავტორიზაციის მოდალი, სადაც ელ ფოსტის და პაროლის ველები გექნებათ; ასევე დაამატეთ 2 ღილაკი, "login " და  "close";login-ზე დაჭერისას ალერტში გამოიტანეთ  ინფუთებში შეყვანილი ინფორმაცია;(form submit)|close-ზე დაჭერისას დახურეთ მოდალი;)
+        const header = document.getElementById('header')
+        header.classList.add('btn')
+
+        const btn1 = document.createElement('button')
+        btn1.textContent = 'ავტორიზაცია'
+        header.appendChild(btn1)
+
+        const btn2 = document.createElement('button')
+        btn2.textContent = 'რეგისტრაცია'
+        header.appendChild(btn2)
+
+        btn1.addEventListener('click' , () => {
+            const body = document.getElementById('main-wrapper')
+
+            const divAbsolute = document.createElement('div')
+            body.appendChild(divAbsolute)
+            divAbsolute.classList.add('position-absolute-div')
+
+            const authorizationInput = document.createElement('input')
+            authorizationInput.type = 'email'
+            authorizationInput.classList.add('authorization-input')
+            authorizationInput.setAttribute('placeholder' , '   Enter your E-mail...')
+            divAbsolute.appendChild(authorizationInput)
+
+            const authorizationInput2 = document.createElement('input')
+            authorizationInput2.type = 'password'
+            authorizationInput2.classList.add('authorization-input')
+            authorizationInput2.setAttribute('placeholder' , '   Enter password...')
+            divAbsolute.appendChild(authorizationInput2)
+
+            const btnWrapper = document.createElement('div')
+            divAbsolute.appendChild(btnWrapper)
+            btnWrapper.classList.add('btn-wrapper')
+
+            const inputBtn1 = document.createElement('button')
+            btnWrapper.appendChild(inputBtn1)
+            inputBtn1.classList.add('btn')
+            inputBtn1.textContent = 'login'
+
+            const inputBtn2 = document.createElement('button')
+            btnWrapper.appendChild(inputBtn2)
+            inputBtn2.classList.add('btn')
+            inputBtn2.textContent = 'close'
+
+            inputBtn1.addEventListener('click' , () => {
+                const value = authorizationInput.value
+                alert(value)
+            })
+
+            inputBtn2.addEventListener('click' , () => {
+                divAbsolute.style.display = 'none'
+            })
+
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1700px;
+    margin: 0 auto;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#click {
+    margin: 30px;
+    padding: 6px 10px;
+}
+
+#back {
+    margin: 30px;
+    padding: 6px 10px;
+}
+
+#modal {
+    display: none;
+}
+
+
+/* -------------------------------- */
+.user-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 0;
+    justify-content: space-between;
+    width: 90%;
+    border: 1px solid black;
+    border-radius: 6px;
+    margin: 3%;
+    padding: 30px;
+}
+
+.user-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid white;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 10px;
+    box-shadow: 10px 5px 5px black;
+}
+
+.form {
+    padding-left: 37%;
+    padding-top: 30px;
+}
+
+.inp {
+    padding: 20px;
+    width: 300px;
+}
+
+.btn {
+    padding: 21px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    border-radius: 0 6px 6px 0;
+    background-color: brown;
+}
